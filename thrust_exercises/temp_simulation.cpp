@@ -11,7 +11,7 @@ using namespace std;
 
 vector<float> init_temp_vector(int n){
     auto randnum = [=] (float){
-    return 25 + ((rand()/RAND_MAX)*75);
+    return 25.0f + (static_cast<float>(rand()/RAND_MAX)*75.0f);
     };
 
     vector<float> temp_init_values(n);
@@ -21,7 +21,7 @@ vector<float> init_temp_vector(int n){
 }
 
 void update_temp(vector<float>& temp_curr){
-    int k = 0.5;
+    int k = 0.5f;
     int temp_room = 25;
     auto op = [=] (float& temp_c){ return temp_c + k*(temp_room - temp_c);};
 
