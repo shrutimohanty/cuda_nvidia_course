@@ -1,5 +1,17 @@
 #include <vector>
 #include <iostream>
+#include <vector>
+#include <random>
+#include <algorithm>
+#include <cstdlib>
 
+using namespace std;
 
-vector<float> temp{42};
+auto randnum = [=] (){
+    return 25 + ((rand()/RAND_MAX)*100 );
+}
+
+vector<float> init_temp_vector(int n){
+    vector<float> temp_init_values(n);
+    transform(temp_init_values.begin(), temp_init_values.end(),temp_init_values.begin(),randnum);
+}
