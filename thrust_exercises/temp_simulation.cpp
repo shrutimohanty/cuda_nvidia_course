@@ -34,6 +34,9 @@ int main(){
     int iter = 4;
 
     for(int i = 0; i< iter; i++){
+        printf("Current temp vector:");
+        for(float x:temp_values){ cout<<x<<" ";}
+        cout<<endl;
         update_temp(temp_values);
     }
 
