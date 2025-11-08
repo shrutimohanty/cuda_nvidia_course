@@ -37,4 +37,7 @@ int main(){
         update_temp(temp_values);
     }
 
+
+    return 1;
+
 }
