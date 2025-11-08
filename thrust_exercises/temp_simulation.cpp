@@ -16,4 +16,6 @@ vector<float> init_temp_vector(int n){
 
     vector<float> temp_init_values(n);
     transform(temp_init_values.begin(), temp_init_values.end(),temp_init_values.begin(),randnum);
+
+    return temp_init_values;
 }
