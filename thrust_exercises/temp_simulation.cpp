@@ -9,7 +9,7 @@ using namespace std;
 
 auto randnum = [=] (){
     return 25 + ((rand()/RAND_MAX)*100 );
-}
+};
 
 vector<float> init_temp_vector(int n){
     vector<float> temp_init_values(n);
