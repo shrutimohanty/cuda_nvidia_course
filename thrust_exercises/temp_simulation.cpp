@@ -11,7 +11,7 @@ using namespace std;
 
 vector<float> init_temp_vector(int n){
     auto randnum = [=] (float){
-    return 25.0f + (static_cast<float>(rand()/RAND_MAX)*75.0f);
+    return 25.0f + ((static_cast<float>(rand())/RAND_MAX)*75.0f);
     };
 
     vector<float> temp_init_values(n);
