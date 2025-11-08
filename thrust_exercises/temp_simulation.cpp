@@ -21,8 +21,8 @@ vector<float> init_temp_vector(int n){
 }
 
 void update_temp(vector<float>& temp_curr){
-    int k = 0.5f;
-    int temp_room = 25;
+    float k = 0.5f;
+    float temp_room = 25.0;
     auto op = [=] (float& temp_c){ return temp_c + k*(temp_room - temp_c);};
 
     transform(temp_curr.begin(),temp_curr.end(),temp_curr.begin(),op);
