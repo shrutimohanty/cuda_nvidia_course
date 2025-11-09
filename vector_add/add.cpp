@@ -19,7 +19,7 @@ void add_op(const float* A, const float* B, float* C, int start_idx, int stride,
 }
 
 int main(){
-    int n = 1024*4;
+    int n = 1024*1024;
 
     float* A = new float[n];
     float* B = new float[n];
