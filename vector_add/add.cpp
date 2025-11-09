@@ -44,11 +44,14 @@ int main(){
         t.join();
     }
 
-    printf("C[0]=%.1f C[last]=%.1f\n", C[0], C[n]);
+    for (int i = 0; i<n; i++){
+        printf("C[%d]=%.1f\n", i, C[i]);
+    }
+    
 
     delete[] A;
     delete[] B;
     delete[] C;
-    
+
     return 1;
 }
