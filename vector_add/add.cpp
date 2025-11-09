@@ -2,6 +2,9 @@
 #include <vector>
 #include <thread>
 #include <cstdlib>
+#include <x86intrin.h>
+#include <chrono>
+#include <iostream>
 
 using namespace std;
 
@@ -34,6 +37,8 @@ int main(){
 
     //create parallel works
     vector<thread> threads;
+
+    auto start_time = chrono::high_resolution_clock::now();
     for(int i = 0; i < nproc; i++){
         int start_idx = i * thread_stride;
         threads.emplace_back(add_op, A, B, C, start_idx, thread_stride, n);
@@ -44,14 +49,21 @@ int main(){
         t.join();
     }
 
-    for (int i = 0; i<n; i++){
-        printf("C[%d]=%.1f\n", i, C[i]);
-    }
+    auto end_time = chrono::high_resolution_clock::now();
+
+    // for (int i = 0; i<n; i++){
+    //     printf("C[%d]=%.1f\n", i, C[i]);
+    // }
+
+    double ms = chrono::duration<double, milli>(end_time - start_time).count();
+
     
+    cout << "C[0] = " << C[0] << ", C[last] = " << C[n - 1] << "\n";
+    cout << "Time taken: " << ms << " ms\n";
 
     delete[] A;
     delete[] B;
     delete[] C;
 
-    return 1;
+    return 0;
 }
