@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <vector>
 #include <thread>
-#include <malloc>
+#include <cstdlib>
 
 using namespace std;
 
