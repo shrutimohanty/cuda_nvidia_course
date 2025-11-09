@@ -18,16 +18,17 @@ vector<float> init_temp_vector(int n){
     return temp_init_values;
 }
 
-auto op = [=] (float temp_c){ 
-    float diff = temp_room - temp_c;
-    return temp_c + k*(diff);
-};
 
 
 int main(){
     vector<float> temp_values = init_temp_vector(3);
 
     int iter = 4;
+
+    auto op = [=] (float temp_c){ 
+        float diff = temp_room - temp_c;
+        return temp_c + k*(diff);
+    };
 
     for(int i = 0; i< iter; i++){
         printf("Current temp vector:");
