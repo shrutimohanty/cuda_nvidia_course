@@ -35,7 +35,7 @@ int main(int argc,char* argv[]){
         C[i] = 0.0f;
     }
 
-    int nproc = 8;
+    int nproc = 64;
     int thread_stride = (n+(nproc - 1))/nproc;
 
     //create parallel works
