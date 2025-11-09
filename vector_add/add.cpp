@@ -8,6 +8,8 @@
 
 using namespace std;
 
+int __MFLOPS = 1024*1024;
+int __GFLOPS = 1024*1024*1024;
 
 void add_op(const float* A, const float* B, float* C, int start_idx, int stride, int n){
     int i = 0;
@@ -18,8 +20,9 @@ void add_op(const float* A, const float* B, float* C, int start_idx, int stride,
     
 }
 
-int main(){
-    int n = 1024*1024;
+int main(int argc,char* argv[]){
+    int num = atoi(argv[1]);
+    int n = num*__GFLOPS; //number of flops = 10^6 FLOPs
 
     float* A = new float[n];
     float* B = new float[n];
@@ -59,6 +62,7 @@ int main(){
 
     
     cout << "C[0] = " << C[0] << ", C[last] = " << C[n - 1] << "\n";
+    cout << "GFLOPs: "<< n/(__GFLOPS);
     cout << "Time taken: " << ms << " ms\n";
 
     delete[] A;
