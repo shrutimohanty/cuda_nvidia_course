@@ -5,18 +5,12 @@
 
 using namespace std;
 
-vector<float> init_vector(int n){
-    vector<float> init_values(n);
-    for(int i =0; i<n; i++){
-        init_values[i] = 1;
-    }
-    return init_values;
-}
 
 void add_op(const float* A, const float* B, float* C, int start_idx, int stride, int n){
     int i = 0;
     while(start_idx<n && i < stride){
         C[start_idx+i] = A[start_idx+i] + B[start_idx+i];
+        i++;
     }
     
 }
@@ -24,15 +18,15 @@ void add_op(const float* A, const float* B, float* C, int start_idx, int stride,
 int main(){
     int n = 1024;
 
-    vector<float> A = malloc(n*(sizeof(float)));
-    vector<float> B = malloc(n*(sizeof(float)));
-    vector<float> C = malloc(n*(sizeof(float)));
-
+    float* A = new float[n];
+    float* B = new float[n];
+    float* C = new float[n];
+    
     //initialize it
     for (int i = 0; i<n; i++){
-        A[i] = 1;
-        B[i] = 2;
-        C[i] = 0;
+        A[i] = 1.0f;
+        B[i] = 2.0f;
+        C[i] = 0.0f;
     }
 
     int nproc = 8;
@@ -41,8 +35,8 @@ int main(){
     //create parallel works
     vector<thread> threads;
     for(int i = 0; i < nproc; i++){
-        int start_idx = i*thread_stride;
-        threads.emplace_back(add_op,A,B,C,start_idx,thread_stride,n)
+        int start_idx = i * thread_stride;
+        threads.emplace_back(add_op, A, B, C, start_idx, thread_stride, n);
     }
 
     //join parallel works
@@ -50,6 +44,11 @@ int main(){
         t.join();
     }
 
-    printf("C[0]=%.1f C[last]=%.1f\n", C.front(), C.back());
+    printf("C[0]=%.1f C[last]=%.1f\n", C[0], C[n]);
+
+    delete[] A;
+    delete[] B;
+    delete[] C;
+    
     return 1;
 }
