@@ -63,7 +63,7 @@ int main(int argc,char* argv[]){
     
     cout << "C[0] = " << C[0] << ", C[last] = " << C[n - 1] << "\n";
     cout << "GFLOPs: "<< n/(__GFLOPS);
-    cout << "Time taken: " << ms << " ms\n";
+    cout << " Time taken: " << ms << " ms\n";
 
     delete[] A;
     delete[] B;
