@@ -25,7 +25,7 @@ int main(){
 
     int iter = 4;
 
-    auto op = [=] __device__ (float temp_c){ 
+    auto op = [=] __host__ __device__ (float temp_c){ 
         float diff = temp_room - temp_c;
         return temp_c + k*(diff);
     };
