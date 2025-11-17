@@ -31,7 +31,7 @@ int main(){
     };
 
     for(int i = 0; i< iter; i++){
-        printf("Current temp vector:");
+        cout << "Current temp vector: ";
         for(float x:temp_values){ cout<<x<<" ";}
         cout<<endl;
 
